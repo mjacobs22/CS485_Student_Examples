@@ -3,20 +3,32 @@
 
 PacString& PacString::operator=(const PacString &rcData)
 {
-	//Actually points back to object in main, don't want to disturb that object
-
 	delete mpszData;
 	mpszData = rcData.mpszData;
-	//rcData.mpszData = nullptr;
 
 	return *this;
 }
 
-//PacString& PacString::operator= (PacString cData)
+//PacString& PacString::operator= (PacString rcData)
 //{
 //	using std::swap;
-//	swap(mpszData, cData.mpszData);
+//	swap(mpszData, rcData.mpszData);
 //
 //	return *this;
+//}
+
+std::ostream& operator<<(std::ostream &out, const PacString &rcData)
+{
+
+}
+
+//PacString& operator+=(const PacString &rcData)
+//{
+//
+//}
+
+//PacString operator+(const PacString &rcData) const
+//{
+//
 //}
 

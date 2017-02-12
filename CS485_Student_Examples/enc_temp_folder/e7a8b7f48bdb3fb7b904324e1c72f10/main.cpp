@@ -32,26 +32,27 @@ _CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
   std::cout << "s3: " << s3 << std::endl;
 
   s3 += (s3 + "!!");
-	//RHS destructor is called 
 
   std::cout << "s3: " << s3 << std::endl;
 
-  // TODO:
-	// dynamically allocate the PacString object using
-	// pcDynString.
-	// Assign "CS485" to pcDynString.
-	// Display pcDynString.
-	// concatenate " is the best!" on to
-	// pcDynString
-	// Display pcDynString.
-	// deallocate the object pcDynString 
 
+
+  // TODO:
   PacString *pcDynString = new PacString ("CS485 ");
 	std::cout << *pcDynString << std::endl;
 
 	*pcDynString = *pcDynString + "is the best!";
 	std::cout << *pcDynString << std::endl;
 	(*pcDynString).~PacString();
+
+  // dynamically allocate the PacString object using
+  // pcDynString.
+  // Assign "CS485" to pcDynString.
+  // Display pcDynString.
+  // concatenate " is the best!" on to
+  // pcDynString
+  // Display pcDynString.
+  // deallocate the object pcDynString 
 
 	//s1.~PacString();
 	//s2.~PacString();

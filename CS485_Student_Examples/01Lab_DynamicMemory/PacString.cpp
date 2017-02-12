@@ -7,8 +7,12 @@ PacString::PacString ()
 
 PacString::PacString (const char *pszString)
 {
-	*mpszData = *pszString; //This throws an exception.
-	//mpszData = pszString; //This won't let me assign because mpszData isn't const.
+	mpszData = new char[strlen(pszString) + 1];
+
+	for (int i = 0; i <= strlen(pszString) + 1; i++)
+	{
+		mpszData[i] = pszString[i];
+	}
 }
 
 PacString::PacString (const PacString &rcData)

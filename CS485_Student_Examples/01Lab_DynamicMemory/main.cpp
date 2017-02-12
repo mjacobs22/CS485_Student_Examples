@@ -8,8 +8,8 @@
 //***************************************************************************
 
 #define MEM_DEBUG
-// #include "mem_debug.h"
-#include "vld.h"
+//#include "mem_debug.h"
+//#include "vld.h"
 
 #include <iostream>
 #include "PacString.h"

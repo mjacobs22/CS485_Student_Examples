@@ -55,8 +55,23 @@ std::ostream& operator<<(std::ostream &out, const PacString &rcData)
 //
 //}
 
-//PacString operator+(const PacString &rcData) const
-//{
-//
-//}
+PacString PacString::operator+(const PacString &rcData) const
+{
+	char *pTemp = new char[strlen(rcData.mpszData) + strlen(mpszData) + 1];
+	int index = 0;
+	PacString cNewData;
+
+	for (int i = 0; i < strlen(mpszData); i++)
+	{
+		pTemp[i] = mpszData[i];
+	}
+
+	for (int i = strlen(mpszData); i <= strlen(rcData.mpszData) + strlen(mpszData) + 1; i++)
+	{
+		pTemp[i] = rcData.mpszData[index++];
+	}
+
+	cNewData.mpszData = pTemp;
+	return cNewData;
+}
 

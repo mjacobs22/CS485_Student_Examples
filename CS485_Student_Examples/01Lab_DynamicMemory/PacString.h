@@ -22,7 +22,7 @@ public:
   // write both operator=, but only compile
   // one at a time.
   PacString& operator=(const PacString &rcData);
-  PacString& operator=(PacString rcData);
+  //PacString& operator=(PacString rcData);
 
   friend std::ostream& operator<<(std::ostream &out, const PacString &rcData);
 

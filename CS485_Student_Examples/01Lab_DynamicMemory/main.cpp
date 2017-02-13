@@ -32,7 +32,6 @@ _CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
   std::cout << "s3: " << s3 << std::endl;
 
   s3 += (s3 + "!!");
-	//RHS destructor is called 
 
   std::cout << "s3: " << s3 << std::endl;
 
@@ -51,11 +50,7 @@ _CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	*pcDynString = *pcDynString + "is the best!";
 	std::cout << *pcDynString << std::endl;
-	(*pcDynString).~PacString();
-
-	//s1.~PacString();
-	//s2.~PacString();
-	//s3.~PacString();
+	delete [] pcDynString;
 
   return EXIT_SUCCESS;
 }

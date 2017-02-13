@@ -1,41 +1,41 @@
 #include "PacString.h"
 #include <utility>
 
-PacString::PacString ()
+
+PacString::PacString()
 {
-	std::cout << "Ctor called.\n";
+	//std::cout << "Default ctor called.\n";
 }
 
-PacString::PacString (const char *pszString)
+PacString::PacString(const char *pszString)
 {
 	mpszData = new char[strlen(pszString) + 1];
 
-	for (int i = 0; i <= strlen(pszString); i++)
+	for (int i = 0; i < strlen(pszString) + 1; i++)
 	{
 		mpszData[i] = pszString[i];
 	}
 
-	std::cout << "Overloaded ctor called.\n";
+	//std::cout << "Overloaded ctor called.\n";
 }
 
-PacString::PacString (const PacString &rcData)
+PacString::PacString(const PacString &rcData) : PacString(rcData.mpszData)
 {
-	mpszData = rcData.mpszData;
-
-	std::cout << "Cctor called.\n";
+	//std::cout << "CCtor called.\n";
 }
 
-PacString::~PacString ()
+PacString::~PacString()
 {
-	mpszData = nullptr;
-	delete [] mpszData;
-	std::cout << "Dtor called.\n";
+	delete[] mpszData;
+	//std::cout << "Dtor called.\n";
 }
 
-//PacString& PacString::operator=(const PacString &rcData) //BROKEN
+//PacString& PacString::operator=(const PacString &rcData)
 //{
-//	delete mpszData;
-//	mpszData = rcData.mpszData;
+//	delete[] mpszData;
+//
+//	mpszData = new char[strlen(rcData.mpszData) + 1];
+//	strcpy_s(mpszData, strlen(rcData.mpszData) + 1, rcData.mpszData);
 //
 //	return *this;
 //}
@@ -58,23 +58,8 @@ std::ostream& operator<<(std::ostream &out, const PacString &rcData)
 
 PacString& PacString::operator+=(const PacString &rcData)
 {
-	char *pTemp = new char[strlen(rcData.mpszData) + strlen(mpszData) + 1];
-	int index = 0;
-
-	for (int i = 0; i < strlen(mpszData); i++)
-	{
-		pTemp[i] = mpszData[i];
-	}
-
-	for (int i = strlen(mpszData); i <= strlen(rcData.mpszData) + strlen(mpszData); i++)
-	{
-		pTemp[i] = rcData.mpszData[index++];
-	}
-
-	mpszData = pTemp;
-	
-	//PacString cNewData = *this + rcData;
-	//std::swap(cNewData.mpszData, mpszData);
+	PacString cNewData = *this + rcData;
+	std::swap(cNewData.mpszData, mpszData);
 
 	return *this;
 }
@@ -83,22 +68,16 @@ PacString PacString::operator+(const PacString &rcData) const
 {
 	char *pTemp = new char[strlen(rcData.mpszData) + strlen(mpszData) + 1];
 	int index = 0;
-	//PacString cNewData;
-
 	for (int i = 0; i < strlen(mpszData); i++)
 	{
 		pTemp[i] = mpszData[i];
 	}
-
 	for (int i = strlen(mpszData); i <= strlen(rcData.mpszData) + strlen(mpszData); i++)
 	{
 		pTemp[i] = rcData.mpszData[index++];
 	}
-	
-	PacString cNewData (pTemp);
-	//cNewData.mpszData = pTemp;
-
+	PacString cNewData(pTemp);
 	delete[] pTemp;
+
 	return cNewData;
 }
-

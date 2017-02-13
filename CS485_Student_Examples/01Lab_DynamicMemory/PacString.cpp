@@ -15,7 +15,7 @@ PacString::PacString (const char *pszString)
 		mpszData[i] = pszString[i];
 	}
 
-	std::cout << "Ctor pszString called.\n";
+	std::cout << "Overloaded ctor called.\n";
 }
 
 PacString::PacString (const PacString &rcData)
@@ -32,22 +32,22 @@ PacString::~PacString ()
 	std::cout << "Dtor called.\n";
 }
 
-PacString& PacString::operator=(const PacString &rcData) 
-{
-	delete mpszData;
-	mpszData = rcData.mpszData;
-
-	return *this;
-}
-
-//PacString& PacString::operator= (PacString rcData)
+//PacString& PacString::operator=(const PacString &rcData)
 //{
-//	using std::swap;
-//	swap(mpszData, rcData.mpszData);
-//	rcData.mpszData = nullptr;
+//	delete mpszData;
+//	mpszData = rcData.mpszData;
 //
 //	return *this;
 //}
+
+PacString& PacString::operator= (PacString rcData)
+{
+	using std::swap;
+	swap(mpszData, rcData.mpszData);
+	rcData.mpszData = nullptr;
+
+	return *this;
+}
 
 std::ostream& operator<<(std::ostream &out, const PacString &rcData)
 {

@@ -48,9 +48,9 @@ _CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
   PacString *pcDynString = new PacString ("CS485 ");
 	std::cout << *pcDynString << std::endl;
 
-	*pcDynString = *pcDynString + "is the best!";
+	*pcDynString += "is the best!";
 	std::cout << *pcDynString << std::endl;
-	delete [] pcDynString;
+	delete pcDynString;
 
   return EXIT_SUCCESS;
 }

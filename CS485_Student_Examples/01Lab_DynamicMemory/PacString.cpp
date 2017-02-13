@@ -10,7 +10,7 @@ PacString::PacString (const char *pszString)
 {
 	mpszData = new char[strlen(pszString) + 1];
 
-	for (int i = 0; i <= strlen(pszString) + 1; i++)
+	for (int i = 0; i <= strlen(pszString); i++)
 	{
 		mpszData[i] = pszString[i];
 	}
@@ -32,7 +32,7 @@ PacString::~PacString ()
 	std::cout << "Dtor called.\n";
 }
 
-//PacString& PacString::operator=(const PacString &rcData)
+//PacString& PacString::operator=(const PacString &rcData) //BROKEN
 //{
 //	delete mpszData;
 //	mpszData = rcData.mpszData;
@@ -71,9 +71,11 @@ PacString& PacString::operator+=(const PacString &rcData)
 		pTemp[i] = rcData.mpszData[index++];
 	}
 
-	delete [] mpszData;
 	mpszData = pTemp;
 	
+	//PacString cNewData = *this + rcData;
+	//std::swap(cNewData.mpszData, mpszData);
+
 	return *this;
 }
 
@@ -81,7 +83,7 @@ PacString PacString::operator+(const PacString &rcData) const
 {
 	char *pTemp = new char[strlen(rcData.mpszData) + strlen(mpszData) + 1];
 	int index = 0;
-	PacString cNewData;
+	//PacString cNewData;
 
 	for (int i = 0; i < strlen(mpszData); i++)
 	{
@@ -93,9 +95,10 @@ PacString PacString::operator+(const PacString &rcData) const
 		pTemp[i] = rcData.mpszData[index++];
 	}
 	
-	delete [] cNewData.mpszData;
-	cNewData.mpszData = pTemp;
+	PacString cNewData (pTemp);
+	//cNewData.mpszData = pTemp;
 
+	delete[] pTemp;
 	return cNewData;
 }
 

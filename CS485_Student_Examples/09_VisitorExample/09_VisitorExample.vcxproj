@@ -150,6 +150,7 @@
     <ClInclude Include="GiveBonusVisitor.h" />
     <ClInclude Include="IEmployeeVisitor.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="PrintSalaryVisitor.h" />
     <ClInclude Include="PrintVisitor.h" />
     <ClInclude Include="SalarySumVisitor.h" />
     <ClInclude Include="SimpleContainer.h" />
@@ -160,10 +161,14 @@
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="GiveBonusVisitor.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="PrintSalaryVisitor.cpp" />
     <ClCompile Include="PrintVisitor.cpp" />
     <ClCompile Include="SalarySumVisitor.cpp" />
     <ClCompile Include="SimpleContainer.cpp" />
     <ClCompile Include="Worker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
